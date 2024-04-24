@@ -4,17 +4,17 @@ const SEVASTOPOL_COORDS = [44.556972, 33.526402];
 const INITIAL_ZOOM = 12;
 
 let batteriesIcon = L.icon({
-    iconUrl: './../img/map-pin-2-fill.svg',
+    iconUrl: './img/map-pin-2-fill.svg',
     iconSize: [40, 40],
 });
 
 let lightbulbsIcon = L.icon({
-    iconUrl: './../img/lightbulbs-location-icon.svg',
+    iconUrl: './img/lightbulbs-location-icon.svg',
     iconSize: [40, 40],
 });
 
 let userLocationIcon = L.icon({
-    iconUrl: './../img/user-location-icon.svg',
+    iconUrl: './img/user-location-icon.svg',
     iconSize: [60, 60],
 });
 
