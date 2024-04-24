@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <!-- Кодировка страницы -->
+    <meta charset="UTF-8">
+    <!-- Заголовок страницы в браузере -->
+    <title>Экокарта</title>
+    <!-- Адаптив -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <!-- Иконка сайта во вкладке браузера -->
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+    <!-- Подключение стилей -->
+    <link rel="stylesheet" href="./css/index.css">
+    <!-- Подключение общих скриптов -->
+    <script src="./js/index.js" defer></script>
+    <!-- Цвет окружающего UI в некоторых моб. браузерах -->
+    <meta name="theme-color" content="limegreen">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <style>
+        .leaflet-touch .leaflet-control-layers, 
+        .leaflet-touch .leaflet-bar {
+            border: none !important;
+        }
+    </style>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="./js/map.js" defer></script>
+
+</head>
+
+<body>
+    <div class="page-wrapper ecomap">
+
+        <nav class="nav">
+            <div class="container container--lg">
+                <ul class="nav__list">
+        
+                    <li class="nav__item nav__item--logo">
+                        <a class="nav__link nav__link--logo" href="/index.html">Сев<span class="accent-color">Эко</span></a>
+                    </li>
+                    <li class="nav__item">
+                        <a class="nav__link" href="./index.html">Главная</a>
+                    </li>
+                    <li class="nav__item">
+                        <a class="nav__link" href="./ecomap.html">Экокарта</a>
+                    </li>
+                    <li class="nav__item">
+                        <a class="nav__link" href="#">Форум</a>
+                    </li>
+                    <li class="nav__item">
+                        <a class="nav__link" href="#">Полезные ресурсы</a>
+                    </li>
+        
+                    <li class="nav__item nav__item--account">
+                        <a class="nav__btn nav__btn--login" href="#">Войти</a>
+                        <a class="nav__btn nav__btn--register" href="#">Присоединиться</a>
+                    </li>
+        
+                </ul>
+            </div>
+        </nav>
+
+        <div class="container container--lg">
+
+            <div class="ecomap__intro">
+                <h1 class="ecomap__title"><span class="accent-color">Эко</span>карта<br>Севастополя</h1>
+                <p class="ecomap__description">Экокарта города Севастополя представляет собой инновационный    инструмент, предназначенный для удобного доступа к информации о точках приема отходов и вторсырья в городе.<br>
+                Помочь городу можно простым действием!
+                Не выбрасывать мусор, а отдать его на переработку.
+                А куда — подскажет интерактивная карта.
+                </p>
+                <img class="ecomap__illustration" src="./img/ecomap_intro_illustration.svg" alt="">
+            </div>
+
+            <div class="ecomap__map">
+
+                <div class="filter-layers">
+                    <div class="filter-layers__header">
+                        <div class="filter-layers__title">Что вы хотите сдать?</div>
+                        <button class="filter-layers__clear-button" type="button">Сбросить (<span></span>)</button>
+                    </div>
+
+                    <div class="filter-layers__checkbox-buttons">
+
+                        <label class="filter-layers__button-checkbox button-checkbox" for="batteries-custom-checkbox" >
+                            <input type="checkbox" name="" id="batteries-custom-checkbox">
+                            <div class="button-checkbox__name">Батарейки</div>
+                        </label>
+
+                        <label class="filter-layers__button-checkbox button-checkbox" for="lightbulbs-custom-checkbox" >
+                            <input type="checkbox" name="" id="lightbulbs-custom-checkbox">
+                            <div class="button-checkbox__name">Лампочки</div>
+                        </label>
+
+                        <label class="filter-layers__button-checkbox button-checkbox" for="paper-custom-checkbox">
+                            <input type="checkbox" name="" id="paper-custom-checkbox">
+                            <div class="button-checkbox__name">Бумага</div>
+                        </label>
+
+                        <label class="filter-layers__button-checkbox button-checkbox" for="plastic-custom-checkbox">
+                            <input type="checkbox" name="" id="plastic-custom-checkbox">
+                            <div class="button-checkbox__name">Пластик</div>
+                        </label>
+
+                        <label class="filter-layers__button-checkbox button-checkbox" for="glass-custom-checkbox">
+                            <input type="checkbox" name="" id="glass-custom-checkbox">
+                            <div class="button-checkbox__name">Стекло</div>
+                        </label>
+
+                        <label class="filter-layers__button-checkbox button-checkbox" for="metal-custom-checkbox">
+                            <input type="checkbox" name="" id="metal-custom-checkbox">
+                            <div class="button-checkbox__name">Металл</div>
+                        </label>
+
+                        <label class="filter-layers__button-checkbox button-checkbox" for="technic-custom-checkbox">
+                            <input type="checkbox" name="" id="technic-custom-checkbox">
+                            <div class="button-checkbox__name">Техника</div>
+                        </label>
+
+                        <label class="filter-layers__button-checkbox button-checkbox" for="clothes-custom-checkbox">
+                            <input type="checkbox" name="" id="clothes-custom-checkbox">
+                            <div class="button-checkbox__name">Одежда</div>
+                        </label>
+
+                    </div>
+
+                    <div class="filter-layers__found-points">
+                        Найдено <span>6</span> пунктов
+                    </div>
+                </div>
+                
+                <div id="map">
+                    <div class="custom-watermark"><span class="accent-color">Эко</span>карта Севастополя</div>
+                </div>
+
+                <button class="location-btn" type="button">Показать моё местоположение</button>
+
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>
