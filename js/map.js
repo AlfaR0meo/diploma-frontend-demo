@@ -60,7 +60,7 @@ let marker5 = L.marker([44.595891, 33.509263], { icon: lightbulbsIcon }).bindPop
 let marker6 = L.marker([44.601119, 33.513052], { icon: lightbulbsIcon }).bindPopup('Информация о точке в виде попапа');
 
 
-// СЛОИ LEAFLET ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+// СЛОИ LEAFLET
 let batteriesLayer = L.layerGroup([marker1, marker2, marker3, marker4]);
 let lightbulbsLayer = L.layerGroup([marker5, marker6]);
 let paperLayer = L.layerGroup([...paperMarkers]);
@@ -122,7 +122,7 @@ let layerControl = L.control.layers(baseMaps, overlayLayers, layerControlOptions
 
 
 
-const locationBtn = document.querySelector('.filter-layers__location-btn');
+const locationBtn = document.querySelector('.location-btn');
 
 if (locationBtn) {
     locationBtn.addEventListener('click', () => {
