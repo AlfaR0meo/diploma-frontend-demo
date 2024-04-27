@@ -1,0 +1,53 @@
+/* ■■■■■ КНОПКИ ■■■■■■■■■■■■■■■■■■■■■■ */
+.btn,
+.button {
+    width: fit-content;
+    display: block;
+    padding: .65em 2em;
+
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    color: hsl(16, 100%, 90%);
+    background-color: hsl(16, 100%, 50%);
+
+    transition: background-color 100ms;
+
+    >span {
+        display: block;
+    }
+
+    &:disabled {
+        background-color: hsl(0, 0%, 50%);
+        color: white;
+        cursor: not-allowed;
+
+        @media (any-hover: hover) {
+            &:hover {
+                background-color: hsl(0, 0%, 45%);
+            }
+        }
+    }
+
+    @media (any-hover: hover) {
+        &:hover {
+            background-color: hsl(20, 100%, 55%);
+        }
+    }
+
+    &:active:not(:disabled) {
+        background-color: hsl(20, 100%, 55%);
+
+        >span {
+            transform: translateY(2px);
+        }
+    }
+
+    &:focus-visible {
+        outline: 4px solid yellow;
+        outline-offset: 4px;
+    }
+}

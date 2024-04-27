@@ -1,0 +1,34 @@
+/* ■■■■■ ПЕРЕМЕННЫЕ ■■■■■■■■■■■■■■■■■■ */
+:root {
+    --ff-body: "Rubik", sans-serif;
+    --ff-heading: var(--ff-body);
+    --ff-logo: "PT Sans", sans-serif;
+    --ff-system: system-ui;
+
+    --clr-bg: #fff;
+    --clr-text: hsl(0 0% 30%);
+    --clr-grey: hsl(0 0% 50%);
+    --clr-light-grey: hsl(0 0% 90%);
+    --clr-accent: limegreen; //#32cd32
+
+    --fs-100: calc(var(--fs-400) * 0.625);  //10px
+    --fs-200: calc(var(--fs-400) * 0.75);   //12px
+    --fs-300: calc(var(--fs-400) * 0.875);  //14px
+    --fs-400: 1rem;                         //16px
+    --fs-500: calc(var(--fs-400) * 1.125);  //18px
+    --fs-600: calc(var(--fs-400) * 1.25);   //20px
+    --fs-700: calc(var(--fs-400) * 1.5);    //24px
+    --fs-800: calc(var(--fs-400) * 3);      //48px
+    --fs-900: calc(var(--fs-400) * 4);      //64px
+    --fs-1000: calc(var(--fs-400) * 5);     //80px
+
+    // @media (max-width: 767px) {
+    //     --fs-400: .9rem;
+    // }
+    // @media (max-width: 575px) {
+    //     --fs-400: .8rem;
+    // }
+    // @media (max-width: 479px) {
+    //     --fs-400: .7rem;
+    // }
+}

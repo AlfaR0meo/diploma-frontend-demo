@@ -1,0 +1,279 @@
+/* ■■■■■ ЭКОКАРТА ■■■■■■■■■■■■■■■■■■■■ */
+
+.ecomap {
+    &__intro {
+        margin-block: 3em;
+        position: relative;
+        z-index: 2;
+    }
+
+    &__title {
+        margin-bottom: 0.5em;
+    }
+
+    &__description {
+        max-width: 55ch;
+        line-height: 1.6;
+    }
+    
+    &__illustration {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: -1;
+
+        height: 100%;
+
+        pointer-events: none;
+        -webkit-user-select: none;
+        user-select: none;
+
+        @media (max-width: 1000px) {
+            height: 75%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        @media (max-width: 768px) {
+            display: none;
+        }
+    }
+
+    &__map {
+        display: grid;
+        gap: 1em;
+    }
+}
+
+.filter-layers {
+    display: grid;
+    align-content: start;
+    gap: 1em;
+
+    &__header {
+        display: flex;
+        align-items: center;
+        gap: 1em;
+    }
+
+    &__title {
+        font-size: var(--fs-700);
+        font-weight: 500;
+    }
+
+    &__clear-button {
+        --pd: .25em;
+        --icon-size: 1em;
+
+        width: fit-content;
+        padding: var(--pd) var(--pd) var(--pd) calc(var(--pd) * 2 + var(--icon-size));
+        
+        font-size: var(--fs-400);
+        
+        color: var(--clr-grey);
+        outline: 2px solid var(--clr-light-grey);
+        border-radius: .25em;
+        transition: outline-color 200ms;
+        position: relative;
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: var(--pd);
+            transform: translateY(-50%);
+            width: var(--icon-size);
+            aspect-ratio: 1;
+            pointer-events: none;
+            background: url("./../img/icons/ecomap/filter-layers/clear-filter-btn-icon.svg") no-repeat center / contain;
+        }
+
+        @media (any-hover: hover) {
+            &:hover {
+                outline-color: currentColor;
+            }
+        }
+
+        &:has(span:empty) {
+            display: none;
+        }
+    }
+
+    &__checkbox-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1em 0.25em;
+    }
+
+    &__custom-checkbox {
+        --pd: .75em;
+        font-size: var(--fs-400);
+        min-width: 6.5em;
+        
+        -webkit-user-select: none;
+        user-select: none;
+        cursor: pointer;
+
+        &--batteries {
+            --custom-color: #663399;
+        }
+        &--lightbulbs {
+            --custom-color: #ffd10f;
+        }
+        &--paper {
+            --custom-color: #6f7278;
+        }
+        &--plastic {
+            --custom-color: #1e90ff;
+        }
+        &--glass {
+            --custom-color: #588f27;
+        }
+        &--metal {
+            --custom-color: #00305a;
+        }
+        &--technic {
+            --custom-color: #796138;
+        }
+        &--clothes {
+            --custom-color: #ff1d23;
+        }
+
+        @media (any-hover: hover) {
+            &:hover {
+                > .filter-icon {
+                    background-color: hsl(0 0% 90%);
+                }
+            }
+        }
+
+        &:has(input[type=checkbox]:checked) {
+            > .filter-icon {
+                fill: white;
+                background-color: var(--custom-color);
+            }
+            > span {
+                font-weight: 600;
+            }
+        }
+
+        > .filter-icon {
+            height: 4.5em;
+            aspect-ratio: 1;
+
+            margin-inline: auto;
+            margin-block-end: var(--pd);
+            padding: var(--pd);
+
+            fill: currentColor;
+            background-color: hsl(0 0% 95%);
+
+            border-radius: 1em;
+            transition: background-color 100ms, fill 100ms;
+        }
+
+        > span {
+            display: block;
+            text-align: center;
+            transition: 100ms font-weight;
+        }
+    }
+
+    &__found-points {
+        color: var(--clr-grey);
+
+        &:has(span:empty) {
+            display: none;
+        }
+    }
+
+    &__location-btn {
+        width: fit-content;
+        padding: 0.75em 1em;
+    
+        font-weight: 500;
+        border-radius: .25em;
+    
+        background-color: dodgerblue;
+        color: #fff;
+        transition: opacity 200ms;
+    
+        @media (any-hover: hover) {
+            &:hover {
+                opacity: .8;
+            }
+        }
+    }
+}
+
+#map {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    font-family: var(--ff-logo, sans-serif) !important;
+    outline-offset: 0 !important;
+    // outline: 3px solid var(--clr-accent);
+
+    // .leaflet-bottom.leaflet-right {
+    //     // display: none !important;
+    // }
+
+    @media (max-width: 600px) {
+        aspect-ratio: 1;
+    }
+
+    * {
+        font-family: inherit;
+    }
+
+    svg.leaflet-attribution-flag {
+        display: none !important;
+    }
+
+    img.leaflet-marker-icon {
+        background-color: transparent !important;
+    }
+
+    .leaflet-control-layers {
+        // display: none !important;
+
+        .leaflet-control-layers-overlays {
+            > label {
+                > span {
+                    display: flex;
+                    gap: 0.5em;
+                    -webkit-user-select: none;
+                    user-select: none;
+                }
+            }
+        }
+    }
+
+    .custom-watermark {
+        position: absolute;
+        z-index: 1000;
+        bottom: 0;
+        left: 0;
+
+        padding: 0.5em;
+
+        font-family: var(--ff-logo);
+        font-size: var(--fs-300);
+        font-weight: 700;
+        line-height: 1.2;
+        text-align: center;
+
+        border-top-right-radius: .35em;
+        color: var(--color-text);
+        background-color: hsl(0 0% 100% / .7);
+        @supports (-webkit-backdrop-filter: blur(5px)) { // для Safari
+            -webkit-backdrop-filter: blur(5px);
+        }
+        backdrop-filter: blur(5px);
+        pointer-events: none;
+        -webkit-user-select: none;
+        user-select: none;
+
+        @media (max-width: 600px) {
+            font-size: var(--fs-300);
+        }
+    }
+}

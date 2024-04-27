@@ -1,0 +1,20 @@
+// ■■■■■ CORE ■■■■■■■■■■■■■■■■■■■■■■■■
+@import "./core/all";
+// ■■■■■ ABSTRACTS ■■■■■■■■■■■■■■■■■■■
+@import "./abstracts/all";
+// ■■■■■ LAYOUT ■■■■■■■■■■■■■■■■■■■■■■
+@import "./layout/all";
+// ■■■■■ BLOCKS ■■■■■■■■■■■■■■■■■■■■■■
+@import "./blocks/all";
+// ■■■■■ COMPONENTS ■■■■■■■■■■■■■■■■■■
+@import "./components/all";
+// ■■■■■ PAGES ■■■■■■■■■■■■■■■■■■■■■■■
+@import "./pages/all";
+
+/* ■■■■■ СТИЛИ САЙТА ■■■■■■■■■■■■■■■■■ */
+// sass --watch resources/scss/index.scss public/css/index.css
+
+.page-wrapper {
+    min-height: 150vh;
+    padding-block: var(--nav-height) 2rem;
+}

@@ -1,0 +1,44 @@
+/* ■■■■■ БАЗОВЫЕ СТИЛИ ■■■■■■■■■■■■■■■ */
+html,
+body {
+    height: 100%;
+}
+
+html {
+    scroll-behavior: smooth;
+    //scrollbar-gutter: stable; // резервирование места под скроллбар при запрете прокрутки страницы
+}
+
+body {
+    font-family: var(--ff-body, sans-serif);
+    font-size: var(--fs-500, 1rem);
+    font-weight: 400;
+    line-height: 1;
+    color: var(--clr-text);
+    background-color: var(--clr-bg, #fff);
+
+    @supports (-webkit-tap-highlight-color: transparent) {
+        -webkit-tap-highlight-color: transparent;
+    }
+}
+
+.page-wrapper {
+    min-height: 100%;
+    overflow: clip;
+    background-color: var(--clr-bg, #fff);
+}
+
+// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+.accent-color {
+    color: var(--clr-accent);
+}
+h1, h2 {
+    font-weight: 700;
+    line-height: 1.25;
+    text-wrap: balance;
+}
+h1 {
+    font-size: var(--fs-800);
+    text-transform: uppercase;
+}
